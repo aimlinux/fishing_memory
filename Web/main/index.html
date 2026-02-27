@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Fishing Log</title>
+  <link rel="stylesheet" href="/Web/main/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>🎣 Fishing Log</h1>
+    <p>あなたの釣果を記録</p>
+  </header>
+
+  <section class="card form-card">
+    <h2>新規記録</h2>
+
+    <div class="input-group">
+      <label>魚種</label>
+      <input type="text" placeholder="例 : シーバス">
+    </div>
+
+    <div class="input-group">
+        <label>釣った場所</label>
+        <input type="text" placeholder="例 : 東京湾">
+    </div>
+
+    <div class="input-group">
+      <label>サイズ(cm)</label>
+      <input type="number" placeholder="例 : 65">
+    </div>
+
+    <div class="input-group">
+      <label>ルアー / エサ</label>
+      <input type="text" placeholder="例 : ミノー">
+    </div>
+
+    <div class="input-group">
+      <label>メモ</label>
+      <textarea placeholder="状況や潮など"></textarea>
+    </div>
+
+    <button class="primary-btn">保存する</button>
+  </section>
+
+  <section class="card stats-card">
+    <h2>統計</h2>
+    <div class="stats">
+      <div>
+        <span class="stat-number">12</span>
+        <span>総釣果</span>
+      </div>
+      <div>
+        <span class="stat-number">78cm</span>
+        <span>最大サイズ</span>
+      </div>
+      <div>
+        <span class="stat-number">4種</span>
+        <span>魚種</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="/Web/main/script/script.js"></script>
+</body>
+</html>
