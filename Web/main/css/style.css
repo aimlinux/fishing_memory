@@ -1,104 +1,155 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #f4f7fb;
 }
 
-.container {
-  width: 95%;
-  max-width: 500px;
-  padding: 20px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-header p {
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-}
-
-.card h2 {
-  margin-bottom: 15px;
-}
-
-.input-group {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.input-group label {
-  font-size: 0.85rem;
-  margin-bottom: 5px;
-  opacity: 0.8;
-}
-
-input, textarea {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255,255,255,0.15);
-  color: white;
-}
-
-textarea {
-  resize: none;
-  height: 70px;
-}
-
-.primary-btn {
+/* ===== ナビバー ===== */
+.navbar {
+  position: fixed;
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #2b7fc3, #5fa8e6);
   color: white;
+  z-index: 1000;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  opacity: 1;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* ===== ボタン ===== */
+.primary-btn {
+  background: linear-gradient(45deg, #ff8a00, #ff5e00);
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 94, 0, 0.4);
   transition: 0.3s;
 }
 
 .primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
+  transform: translateY(-3px);
 }
 
-.stats {
+.primary-btn.small {
+  padding: 8px 18px;
+}
+
+.secondary-btn {
+  background: #1976d2;
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.outline-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* ===== ヒーローセクション ===== */
+.hero {
+  position: relative;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  color: white;
+  overflow: hidden;
 }
 
-.stat-number {
-  font-size: 1.4rem;
-  font-weight: bold;
-  display: block;
+/* ★ 背景画像を全面化 */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
+
+/* ★ オーバーレイ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 40, 80, 0.55),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: 1;
+}
+
+/* ★ 文字を最前面へ */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.hero-content {
+  color: white;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 20px 0;
+  line-height: 1.3;
+}
+
+.hero-content span {
+  color: #ff8a00;
+}
+
+.sub {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* 下セクション */
