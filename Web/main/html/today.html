@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Fishing Map Pro</title>
+  <link rel="stylesheet" href="../css/today_style.css">
+</head>
+<body>
+
+<header class="navbar">
+<div class="logo">
+<a href="../index.html" style="text-decoration:none; color:white;">
+    🎣 Fishing Map
+</a>
+</div>
+  <nav>
+    <a href="#">今日の釣果を記録</a>
+    <a href="#">過去の釣果</a>
+    <a href="#">釣果マップ</a>
+    <a href="#">お知らせ</a>
+  </nav>
+  <div class="nav-buttons">
+    <button class="outline-btn">ログイン</button>
+    <button class="primary-btn small">会員登録</button>
+  </div>
+</header>
+
+<section class="hero">
+
+  <img src="../img/20251013_170953.jpg" alt="syasinn" class="hero-bg">
+  <div class="overlay"></div>
+  
+  <div class="hero-content">
+    <h1>🎣 今日の釣果を記録</h1>
+    <p class="sub">釣れた情報を入力してデータを蓄積しよう</p>
+
+    <!-- ★ 入力カード -->
+    <div class="catch-card">
+
+      <div class="form-group">
+        <label>魚種</label>
+        <input type="text" placeholder="例：シーバス">
+      </div>
+
+      <div class="form-group">
+        <label>サイズ (cm)</label>
+        <input type="number" placeholder="例：65">
+      </div>
+
+      <div class="form-group">
+        <label>釣り場所</label>
+        <input type="text" placeholder="例：中海">
+      </div>
+
+      <div class="form-group">
+        <label>使用ルアー</label>
+        <input type="text" placeholder="例：ミノー">
+      </div>
+
+      <div class="form-group">
+        <label>写真</label>
+        <input type="file">
+      </div>
+
+      <div class="form-group">
+        <label>メモ</label>
+        <textarea placeholder="潮・時間・状況など"></textarea>
+      </div>
+
+      <button class="primary-btn save-btn">保存する</button>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="../script/script.js"></script>
+</body>
+</html>
