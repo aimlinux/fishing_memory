@@ -22,6 +22,7 @@ body {
   z-index: 1000;
 }
 
+
 .navbar nav a {
   margin: 0 15px;
   text-decoration: none;
@@ -30,6 +31,37 @@ body {
   opacity: 0.9;
   transition: 0.3s;
 }
+
+/* ===== ナビのアクティブ下線 ===== */
+.navbar nav a {
+  position: relative;
+}
+
+/* 通常時（ホバーアニメ用） */
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 10;
+  height: 3px;
+  background: #8f0835;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* ホバー時 */
+.navbar nav a:hover::after {
+  width: 60%;
+}
+
+/* ★ 現在ページ（常に表示） */
+.navbar nav a.active::after {
+  background: #ff5e00;
+  width: 100%;
+}
+/* ========================*/
+
 
 .navbar nav a:hover {
   opacity: 1;
