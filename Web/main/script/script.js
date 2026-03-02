@@ -107,7 +107,7 @@ if (historyList) {
             ${data.image ? `<img src="${data.image}" class="catch-photo">` : ""}
 
             <p><strong>場所:</strong> ${data.place}</p>
-            <p><strong>ルアー:</strong> ${data.lure}</p>
+            <p><strong>ルアー・餌:</strong> ${data.lure}</p>
             <p><strong>メモ:</strong> ${data.memo}</p>
             <p class="date">${data.date}</p>
             <button class="delete-btn" data-index="${realIndex}">🗑 削除</button>
