@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Fishing Map Pro</title>
   <link rel="stylesheet" href="../css/today_style.css">
+  <link rel="stylesheet" href="../css/ocean_btn.css">
+  <link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,7 +19,7 @@
     <a href="../index.html">ホーム</a>
     <a href="#" class="active">今日の釣果を記録</a>
     <a href="history.html">過去の釣果</a>
-    <a href="#">釣果マップ</a>
+    <a href="map.html">釣果マップ</a>
   </nav>
   <div class="nav-buttons">
     <button class="outline-btn">ログイン</button>
@@ -31,8 +33,8 @@
   <div class="overlay"></div>
   
   <div class="hero-content">
-    <h1>🎣 今日の釣果を記録</h1>
-    <p class="sub">釣れた情報を入力してデータを蓄積しよう</p>
+    <h1>🎣 今日の釣果を記録 🎣</h1>
+    <h3 class="sub">釣れた情報を入力してデータを蓄積しよう</h3>
 
     <!-- ★ 入力カード -->
     <div class="catch-card">
@@ -54,7 +56,7 @@
 
       <div class="form-group">
         <label>使用ルアー・餌</label>
-        <input type="text" placeholder="例：ミノー">
+        <input type="text" placeholder="例：オキアミ">
       </div>
 
       <div class="form-group">
@@ -67,7 +69,18 @@
         <textarea placeholder="潮・時間・状況など"></textarea>
       </div>
 
-      <button class="primary-btn save-btn" id="saveBtn">保存する</button>
+      <a href="#" class="button button--3 save-btn" id="saveBtn">
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="fish"></span>
+        <span class="button__text">記録する</span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+      </a>
 
     </div>
   </div>

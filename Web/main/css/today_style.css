@@ -165,7 +165,7 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 20px 0;
   line-height: 1.3;
 }
@@ -180,7 +180,7 @@ body {
 
 .sub {
   opacity: 0.9;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .hero-buttons {
@@ -190,4 +190,34 @@ body {
   gap: 20px;
 }
 
-/* 下セクション */
+
+/* 記録ボタンを中央配置 */
+
+.catch-card {
+  text-align: center;
+}
+
+.catch-card .button {
+  display: flex;
+  margin: 30px auto 0 auto;  /* ← これで中央 */
+}
+
+.catch-card .button {
+  width: 250px;       /* 好きな幅 */
+  margin: 30px auto;  /* 中央 */
+}
+
+
+.form-group label {
+  display: block;
+  font-size: 1.3rem;      /* ← 文字サイズUP */
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(225, 133, 46);
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
