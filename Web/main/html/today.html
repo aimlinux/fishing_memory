@@ -16,7 +16,7 @@
   <nav>
     <a href="../index.html">ホーム</a>
     <a href="#" class="active">今日の釣果を記録</a>
-    <a href="#">過去の釣果</a>
+    <a href="history.html">過去の釣果</a>
     <a href="#">釣果マップ</a>
   </nav>
   <div class="nav-buttons">
@@ -53,13 +53,13 @@
       </div>
 
       <div class="form-group">
-        <label>使用ルアー</label>
+        <label>使用ルアー or 餌</label>
         <input type="text" placeholder="例：ミノー">
       </div>
 
       <div class="form-group">
         <label>写真</label>
-        <input type="file">
+        <input type="file" id="photoInput" accept="image/*">
       </div>
 
       <div class="form-group">
@@ -67,7 +67,7 @@
         <textarea placeholder="潮・時間・状況など"></textarea>
       </div>
 
-      <button class="primary-btn save-btn">保存する</button>
+      <button class="primary-btn save-btn" id="saveBtn">保存する</button>
 
     </div>
   </div>
