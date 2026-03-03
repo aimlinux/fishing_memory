@@ -23,19 +23,21 @@
 
 <section class="map-section">
 
-  <h1>釣果マップ</h1>
+  <h1>🗺 釣果マップ 🗺</h1>
 
   <!-- 地域選択 -->
-  <select id="regionSelect">
-    <option value="">地域を選択</option>
-    <option value="nakaumi">中海</option>
-    <option value="shimane">島根半島</option>
-    <option value="umi">日本海</option>
-  </select>
+  <div class="select-wrapper">
+    <select id="regionSelect">
+      <option value="">地域を選択</option>
+      <option value="nakaumi" selected>中海</option>
+      <option value="shimane">島根半島</option>
+      <option value="umi">日本海</option>
+    </select>
+  </div>
 
   <!-- マップ表示エリア -->
   <div class="map-container">
-    <img id="mapImage" src="" alt="">
+    <img id="mapImage" src="../img/nakaumi.jpg" alt="">
     <div id="pinLayer"></div>
   </div>
 
