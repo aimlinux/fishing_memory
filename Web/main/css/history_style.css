@@ -6,7 +6,11 @@
 }
 
 body {
-  background: #f4f7fb;
+  background-image: url("../img/20251013_170953.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* ← スクロールで動く */
 }
 
 /* ===== ナビバー ===== */

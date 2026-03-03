@@ -1,83 +1,73 @@
+/* ===============================
+   基本設定
+================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background: #f4f7fb;
+  background-image: url("../img/20251013_170953.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* ← スクロールで動く */
 }
 
-/* ===== ナビバー ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* ===============================
+   ナビバー
+================================= */
 .navbar {
   position: fixed;
   width: 100%;
-  padding: 20px 60px;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #2b7fc3, #5fa8e6);
-  color: white;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
   z-index: 1000;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .navbar nav a {
   margin: 0 15px;
   text-decoration: none;
   color: white;
-  font-size: 1.3rem;
-  opacity: 0.9;
-  transition: 0.3s;
-}
-
-
-
-/* ===== ナビのアクティブ下線 ===== */
-.navbar nav a {
+  font-weight: 500;
   position: relative;
 }
 
-/* 通常時（ホバーアニメ用） */
 .navbar nav a::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 10;
-  height: 3px;
-  background: #8f0835;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00c6ff;
+  transition: 0.3s;
 }
 
-/* ホバー時 */
-.navbar nav a:hover::after {
-  width: 60%;
-}
-
-/* ★ 現在ページ（常に表示） */
+.navbar nav a:hover::after,
 .navbar nav a.active::after {
-  background: #ff5e00;
   width: 100%;
 }
-/* ========================*/
 
-
-
-.navbar nav a:hover {
-  opacity: 1;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 15px;
-}
 
 /* ===== ボタン ===== */
 .primary-btn {
@@ -118,106 +108,125 @@ body {
   cursor: pointer;
 }
 
-/* ===== ヒーローセクション ===== */
+/* ===============================
+   ヒーロー背景
+================================= */
 .hero {
-  position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 100px;   /* ナビ分の余白 */
+  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: white;
-  overflow: hidden;
 }
 
-/* ★ 背景画像を全面化 */
 .hero-bg {
   position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  z-index: -2;
 }
 
-/* ★ オーバーレイ */
 .overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0, 40, 80, 0.55),
-    rgba(0, 0, 0, 0.75)
-  );
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
 }
 
-/* ★ 文字を最前面へ */
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-
-
-.hero-content {
-  color: white;
-  z-index: 2;
-}
 
 .hero-content h1 {
-  font-size: 4rem;
-  margin: 20px 0;
-  line-height: 1.3;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.hero-content h1 {
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.hero-content span {
-  color: #ff8a00;
-}
-
-.sub {
+.hero-content .sub {
+  margin-bottom: 30px;
   opacity: 0.9;
-  font-size: 1.5rem;
 }
 
-.hero-buttons {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-
-/* 記録ボタンを中央配置 */
-
+/* ===============================
+   入力カード
+================================= */
 .catch-card {
-  text-align: center;
+  width: 450px;
+  max-width: 90%;
+  padding: 40px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  margin: auto;
 }
 
-.catch-card .button {
-  display: flex;
-  margin: 30px auto 0 auto;  /* ← これで中央 */
+/* ===============================
+   フォーム
+================================= */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
 }
-
-.catch-card .button {
-  width: 250px;       /* 好きな幅 */
-  margin: 30px auto;  /* 中央 */
-}
-
 
 .form-group label {
   display: block;
-  font-size: 1.3rem;      /* ← 文字サイズUP */
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 8px;
-  color: rgb(225, 133, 46);
 }
 
 .form-group input,
 .form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
   background: rgba(255,255,255,0.9);
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* ===============================
+   Oceanボタン中央配置
+================================= */
+.catch-card .button {
+  display: block;
+  width: 280px;
+  margin: 30px auto 0 auto;
+}
+
+/* ===============================
+   レスポンシブ
+================================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar nav {
+    display: none; /* スマホでは非表示（後でハンバーガー可） */
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .catch-card {
+    padding: 25px;
+  }
+}
+
+
+#saveBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* アイコン入れる用 */
 }

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fish = document.querySelector("input[placeholder='例：シーバス']")?.value || "";
     const size = document.querySelector("input[placeholder='例：65']")?.value || "";
     const place = document.querySelector("input[placeholder='例：中海']")?.value || "";
-    const lure = document.querySelector("input[placeholder='例：ミノー']")?.value || "";
+    const lure = document.querySelector("input[placeholder='例：オキアミ']")?.value || "";
     const memo = document.querySelector("textarea")?.value || "";
 
     const fileInput = document.getElementById("photoInput");
