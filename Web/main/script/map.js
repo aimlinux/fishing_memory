@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapImage = document.getElementById("mapImage");
   const pinLayer = document.getElementById("pinLayer");
 
+  const defaultRegion = "nakaumi";
+
+  /* ===============================
+     初期表示（中海を自動表示）
+  =============================== */
+  regionSelect.value = defaultRegion;
+  mapImage.src = `../img/${defaultRegion}.jpg`;
+  loadPins(defaultRegion);
+
   /* ===============================
      地域変更時：マップ切り替え
   =============================== */
@@ -13,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mapImage.src = `../img/${region}.jpg`;
 
-    // ピン再描画
     pinLayer.innerHTML = "";
     loadPins(region);
   });
@@ -22,15 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
      マップクリック → 釣果選択
   =============================== */
   mapImage.addEventListener("click", (e) => {
+
     const region = regionSelect.value;
     if (!region) return alert("地域を選択してください");
 
-    const history = JSON.parse(localStorage.getItem("fishingHistory")) || [];
+    const history = safeParse("fishingHistory");
     if (history.length === 0) return alert("釣果データがありません");
 
     const rect = mapImage.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width * 100;
-    const y = (e.clientY - rect.top) / rect.height * 100;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
 
     showSelectPopup(history, region, x, y);
   });
@@ -69,14 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
           y,
           fish: selected.fish,
           size: selected.size,
-          image: selected.image
+          image: selected.image || ""
         };
 
-        let mapData = JSON.parse(localStorage.getItem("mapData")) || [];
-        mapData.push(data);
-        localStorage.setItem("mapData", JSON.stringify(mapData));
-
+        savePin(data);
         addPin(data);
+
         box.remove();
       });
     });
@@ -108,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="delete-btn">削除</button>
       `;
 
-      // 画像拡大
+      /* 画像拡大 */
       const img = info.querySelector(".popup-img");
       if (img) {
         img.addEventListener("click", () => {
@@ -116,11 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // 削除
+      /* 削除 */
       info.querySelector(".delete-btn").addEventListener("click", () => {
-        let mapData = JSON.parse(localStorage.getItem("mapData")) || [];
-        mapData = mapData.filter(d => d.id !== data.id);
-        localStorage.setItem("mapData", JSON.stringify(mapData));
+        deletePin(data.id);
         pin.remove();
         info.remove();
       });
@@ -132,90 +137,69 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ===============================
-     画像拡大モーダル
+     保存（常にlocalStorageを正とする）
   =============================== */
-  function showImageModal(src) {
+  function savePin(data) {
 
-    const modal = document.createElement("div");
-    modal.className = "image-modal";
+    const mapData = safeParse("mapData");
 
-    modal.innerHTML = `
-      <div class="modal-bg"></div>
-      <img src="${src}" class="modal-img">
-    `;
+    mapData.push(data);
 
-    modal.querySelector(".modal-bg").addEventListener("click", () => {
-      modal.remove();
-    });
-
-    document.body.appendChild(modal);
+    localStorage.setItem("mapData", JSON.stringify(mapData));
   }
 
   /* ===============================
-     保存済みピン読み込み
+     読み込み（再起動対応）
   =============================== */
   function loadPins(region) {
-    const mapData = JSON.parse(localStorage.getItem("mapData")) || [];
+
+    pinLayer.innerHTML = "";
+
+    const mapData = safeParse("mapData");
+
     mapData
       .filter(d => d.region === region)
       .forEach(d => addPin(d));
   }
 
+  /* ===============================
+     削除（保存も同期）
+  =============================== */
+  function deletePin(id) {
+
+    let mapData = safeParse("mapData");
+
+    mapData = mapData.filter(d => d.id !== id);
+
+    localStorage.setItem("mapData", JSON.stringify(mapData));
+  }
+
+  /* ===============================
+     JSON安全パース
+  =============================== */
+  function safeParse(key) {
+    try {
+      const data = JSON.parse(localStorage.getItem(key));
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
+  }
+
 });
 
 
+/************************************
+  画面のどこかをクリックしたら
+  info-box を閉じる
+*************************************/
+document.addEventListener("click", (e) => {
 
-/* ===============================
-   GoogleMap風ズーム＆パン
-================================ */
+  // ピンをクリックした時は閉じない
+  if (e.target.closest(".pin")) return;
 
-// let scale = 1;
-// let originX = 0;
-// let originY = 0;
-// let isDragging = false;
-// let startX, startY;
+  document.querySelectorAll(".info-box").forEach(box => {
+    box.remove();
+  });
 
-// const container = document.querySelector(".map-container");
-
-// /* ズーム（ホイール） */
-// container.addEventListener("wheel", (e) => {
-//   e.preventDefault();
-
-//   const zoomIntensity = 0.1;
-//   const direction = e.deltaY > 0 ? -1 : 1;
-//   const newScale = scale + direction * zoomIntensity;
-
-//   if (newScale < 1) return;
-//   if (newScale > 4) return; // 最大4倍
-
-//   scale = newScale;
-//   updateTransform();
-// });
-
-// /* ドラッグ開始 */
-// container.addEventListener("mousedown", (e) => {
-//   isDragging = true;
-//   startX = e.clientX - originX;
-//   startY = e.clientY - originY;
-// });
-
-// /* ドラッグ中 */
-// window.addEventListener("mousemove", (e) => {
-//   if (!isDragging) return;
-
-//   originX = e.clientX - startX;
-//   originY = e.clientY - startY;
-//   updateTransform();
-// });
-
-// /* ドラッグ終了 */
-// window.addEventListener("mouseup", () => {
-//   isDragging = false;
-// });
-
-// /* 変形適用 */
-// function updateTransform() {
-//   const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-//   mapImage.style.transform = transform;
-//   pinLayer.style.transform = transform;
-// }
+});

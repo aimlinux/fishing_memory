@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #2b7fc3, #5fa8e6);
+  background: linear-gradient(90deg, #01070c, #b10f35);
   color: white;
   z-index: 1000;
 }
