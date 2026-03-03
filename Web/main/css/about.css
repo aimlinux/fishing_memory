@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ナビ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.navbar a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 0.6;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ヒーロー */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: fadeUp 1s ease;
+}
+
+.hero p {
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+/* ガラスカード */
+.glass-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px;
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.2);
+}
+
+.glass-card h2 {
+  margin-bottom: 15px;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+/* アニメーション */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
