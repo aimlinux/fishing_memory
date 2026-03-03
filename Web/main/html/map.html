@@ -21,9 +21,30 @@
   </div>
 </header>
 
+<section class="map-section">
+
+  <h1>釣果マップ</h1>
+
+  <!-- 地域選択 -->
+  <select id="regionSelect">
+    <option value="">地域を選択</option>
+    <option value="nakaumi">中海</option>
+    <option value="shimane">島根半島</option>
+    <option value="umi">日本海</option>
+  </select>
+
+  <!-- マップ表示エリア -->
+  <div class="map-container">
+    <img id="mapImage" src="" alt="">
+    <div id="pinLayer"></div>
+  </div>
+
+</section>
+
 
 
 
 <script src="../script/script.js"></script>
+<script src="../script/map.js"></script>
 </body>
 </html>

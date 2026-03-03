@@ -190,4 +190,39 @@ body {
   gap: 20px;
 }
 
-/* 下セクション */
+
+
+
+
+
+.map-section {
+  text-align: center;
+  padding: 40px;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#mapImage {
+  width: 800px;
+  max-width: 90%;
+  border-radius: 20px;
+}
+
+#pinLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  font-size: 24px;
+}
