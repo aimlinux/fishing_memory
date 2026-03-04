@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const size = document.querySelector("input[placeholder='例：65']")?.value || "";
     const place = document.querySelector("input[placeholder='例：中海']")?.value || "";
     const lure = document.querySelector("input[placeholder='例：オキアミ']")?.value || "";
+    const catchTimeInput = document.getElementById("catchTime");
+    const catchTime = catchTimeInput?.value || new Date().toISOString().slice(0, 16);
     const memo = document.querySelector("textarea")?.value || "";
 
     const fileInput = document.getElementById("photoInput");
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lure,
         memo,
         image: imageBase64,
-        date: new Date().toLocaleString()
+        date: catchTime
       };
 
       let history = JSON.parse(localStorage.getItem("fishingHistory")) || [];
@@ -40,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("fishingHistory", JSON.stringify(history));
 
       alert("保存しました！");
+      document.getElementById("catchTime").value = "";
     };
 
     // ===== 画像処理（圧縮版）=====
@@ -102,14 +105,17 @@ if (historyList) {
         card.className = "catch-card";
 
           card.innerHTML = `
-            <h3>${data.fish} (${data.size}cm)</h3>
+            <h3>🐠${data.fish} (${data.size}cm)</h3>
 
             ${data.image ? `<img src="${data.image}" class="catch-photo">` : ""}
 
-            <p><strong>場所:</strong> ${data.place}</p>
-            <p><strong>ルアー・餌:</strong> ${data.lure}</p>
-            <p><strong>メモ:</strong> ${data.memo}</p>
-            <p class="date">${data.date}</p>
+            <p><strong>🗺場所:</strong> ${data.place}</p>
+            <p><strong>🐟ルアー・餌:</strong> ${data.lure}</p>
+            <p><strong>📝メモ:</strong> ${data.memo}</p>
+            <p><strong>🎣釣った日時:</strong> ${new Date(data.date).toLocaleString()}</p>
+            <p class="date">
+            ${new Date(data.date).toLocaleString()}
+            </p>
             <button class="delete-btn" data-index="${realIndex}">🗑 削除</button>
           `;
 
