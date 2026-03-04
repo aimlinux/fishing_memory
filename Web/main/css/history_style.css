@@ -459,3 +459,12 @@ body::before {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+.catch-photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}
