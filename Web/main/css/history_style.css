@@ -125,13 +125,19 @@ body {
 /* ===== ヒーローセクション ===== */
 .hero {
   position: relative;
-  height: 100vh;
+  padding: 120px 0;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
   overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.2;
 }
 
 /* ★ 背景画像を全面化 */
@@ -264,3 +270,192 @@ body {
 }
 
 /* 下セクション */
+
+
+
+
+
+
+
+
+/* chatgpt */
+/* ==============================
+   GLOBAL 強化
+============================== */
+body {
+  background-image: url("../img/20251013_170953.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: white;
+  position: relative;
+}
+
+/* ほんのり暗く＋ガラス感 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+/* ==============================
+   ナビバー確変
+============================== */
+.navbar {
+  background: rgba(1, 7, 12, 0.75);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s ease;
+}
+
+.navbar nav a {
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.navbar nav a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* 下線バグ修正＋アニメ強化 */
+.navbar nav a::after {
+  width: 0%; /* ← 10 を修正 */
+  height: 3px;
+  background: linear-gradient(90deg,#ff8a00,#ff3c00);
+  transition: 0.3s ease;
+}
+
+.navbar nav a:hover::after {
+  width: 70%;
+}
+
+.navbar nav a.active::after {
+  width: 100%;
+}
+
+/* ==============================
+   ボタン確変
+============================== */
+.primary-btn {
+  background: linear-gradient(45deg,#ff8a00,#ff3c00);
+  box-shadow: 0 10px 25px rgba(255,60,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255,60,0,0.7);
+}
+
+.secondary-btn {
+  background: linear-gradient(45deg,#1976d2,#0d47a1);
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.outline-btn {
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: 0.3s;
+}
+
+.outline-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ==============================
+   ヒーロー確変
+============================== */
+.hero-content h1 {
+  animation: fadeUp 1.4s ease;
+}
+
+.sub {
+  animation: fadeUp 1.8s ease;
+}
+
+.hero-buttons {
+  animation: fadeUp 2.2s ease;
+}
+
+/* ==============================
+   履歴カード確変（ガラス化）
+============================== */
+.catch-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transition: all 0.35s ease;
+}
+
+.catch-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+/* 日付文字も白寄せ */
+.catch-card .date {
+  opacity: 0.8;
+  color: rgba(255,255,255,0.8);
+}
+
+/* 写真ズーム */
+.catch-photo {
+  transition: 0.4s ease;
+}
+
+.catch-photo:hover {
+  transform: scale(1.05);
+}
+
+/* 削除ボタン強化 */
+.delete-btn {
+  transition: 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255,0,0,0.5);
+}
+
+/* ==============================
+   アニメーション
+============================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==============================
+   スクロール出現アニメ
+============================== */
+.catch-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease;
+}
+
+.catch-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}

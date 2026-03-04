@@ -17,9 +17,9 @@
     <a href="html/history.html">過去の釣果</a>
     <a href="html/map.html">釣果マップ</a>
   </nav>
-  <div class="nav-buttons">
-    <a href="./html/login.html"><button class="outline-btn">ログイン</button></a>
-    <a href="./html/register.html"><button class="primary-btn small">会員登録</button></a>
+  <div class="nav-buttons" id="navButtons">
+    <a href="./html/login.html"><button class="outline-btn" onclick="showLogin()">ログイン</button></a>
+    <a href="./html/register.html"><button class="primary-btn small" onclick="showRegister()">会員登録</button></a>
   </div>
 </header>
 
@@ -68,6 +68,9 @@
 
 </section>
 
-<script src="script/script.js"></script>
+<script src="script/auth.js"></script>
+<script>
+  updateNavbar();
+</script>
 </body>
 </html>

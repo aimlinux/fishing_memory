@@ -1,59 +1,100 @@
-function getUsers() {
-  return JSON.parse(localStorage.getItem("users")) || [];
-}
+// // ===============================
+// // ユーザー管理
+// // ===============================
+// // ===============================
+// // ユーザー管理
+// // ===============================
+// function getUsers() {
+//   return JSON.parse(localStorage.getItem("users")) || [];
+// }
 
-function saveUsers(users) {
-  localStorage.setItem("users", JSON.stringify(users));
-}
+// function saveUsers(users) {
+//   localStorage.setItem("users", JSON.stringify(users));
+// }
 
-/* 会員登録 */
-function register() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+// // ===============================
+// // 会員登録
+// // ===============================
+// function register() {
+//   const username = document.getElementById("username").value;
+//   const password = document.getElementById("password").value;
 
-  if (!username || !password) {
-    alert("入力してください");
-    return;
-  }
+//   if (!username || !password) {
+//     alert("入力してください");
+//     return;
+//   }
 
-  let users = getUsers();
+//   let users = getUsers();
 
-  if (users.find(u => u.username === username)) {
-    alert("このユーザー名は既に存在します");
-    return;
-  }
+//   if (users.find(u => u.username === username)) {
+//     alert("このユーザー名は既に存在します");
+//     return;
+//   }
 
-  users.push({ username, password });
-  saveUsers(users);
+//   users.push({ username, password });
+//   saveUsers(users);
 
-  alert("登録成功！");
-  window.location.href = "login.html";
-}
+//   // ★ 登録と同時にログイン状態にする
+//   localStorage.setItem("currentUser", username);
 
-/* ログイン */
-function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+//   alert("登録＆ログイン成功！");
+//   window.location.href = "../index.html";
+// }
 
-  const users = getUsers();
+// // ===============================
+// // ログイン
+// // ===============================
+// function login() {
+//   const username = document.getElementById("username").value;
+//   const password = document.getElementById("password").value;
 
-  const user = users.find(
-    u => u.username === username && u.password === password
-  );
+//   const users = getUsers();
 
-  if (!user) {
-    alert("ユーザー名またはパスワードが違います");
-    return;
-  }
+//   const user = users.find(
+//     u => u.username === username && u.password === password
+//   );
 
-  localStorage.setItem("currentUser", username);
+//   if (!user) {
+//     alert("ユーザー名またはパスワードが違います");
+//     return;
+//   }
 
-  alert("ログイン成功！");
-  window.location.href = "index.html";
-}
+//   localStorage.setItem("currentUser", username);
 
-/* ログアウト */
-function logout() {
-  localStorage.removeItem("currentUser");
-  window.location.href = "index.html";
-}
+//   alert("ログイン成功！");
+//   window.location.href = "../index.html";
+// }
+
+// // ===============================
+// // ログアウト
+// // ===============================
+// function logout() {
+//   localStorage.removeItem("currentUser");
+//   window.location.href = "../index.html";
+// }
+
+// // ===============================
+// // ナビ更新（★これが重要）
+// // ===============================
+// function updateNavbar() {
+//   const nav = document.getElementById("navButtons");
+//   if (!nav) return;
+
+//   const user = localStorage.getItem("currentUser");
+
+//   if (user) {
+//     nav.innerHTML = `
+//       <span class="user-name">👤 ${user}</span>
+//       <button class="outline-btn" onclick="logout()">ログアウト</button>
+//     `;
+//   } else {
+//     nav.innerHTML = `
+//       <a href="../html/login.html">
+//         <button class="outline-btn">ログイン</button>
+//       </a>
+//       <a href="../html/register.html">
+//         <button class="primary-btn small">会員登録</button>
+//       </a>
+//     `;
+//   }
+// }
