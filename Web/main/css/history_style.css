@@ -269,11 +269,6 @@ body {
   gap: 20px;
 }
 
-/* 下セクション */
-
-
-
-
 
 
 
@@ -462,9 +457,3 @@ body::before {
 
 
 
-.catch-photo {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  border-radius: 12px;
-}
