@@ -1,0 +1,241 @@
+/* =======================================
+   スマホ・タブレット向けレスポンシブスタイル
+========================================= */
+
+/* ----- ハンバーガーメニューボタン ----- */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 2005; /* glass menu より上 */
+  width: 30px;
+  height: 24px;
+  position: relative;
+  background: transparent;
+  border: none;
+  margin-left: auto;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .3s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 10px; }
+.hamburger span:nth-child(3) { top: 20px; }
+
+/* ハンバーガー アクティブ(×)状態 */
+.hamburger.active span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  left: -40px;
+}
+.hamburger.active span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+/* ----- フルスクリーン モバイルメニュー ----- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* スタイリッシュなガラス風暗号化 */
+  background: rgba(10, 20, 35, 0.9);
+  backdrop-filter: blur(20px);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.95);
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* メニュー内リンク */
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.mobile-menu nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+.mobile-menu nav a:hover {
+  color: #ff8a00;
+  transform: translateY(-2px);
+}
+
+.mobile-menu nav a.active-link {
+  color: #ff5e00;
+  position: relative;
+}
+.mobile-menu nav a.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: #ff5e00;
+  border-radius: 2px;
+}
+
+/* メニュー内のボタンエリア */
+.mobile-menu .nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.mobile-menu .nav-buttons button {
+  width: 220px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+}
+
+
+/* =======================================
+   レスポンシブオーバーライド
+========================================= */
+@media (max-width: 768px) {
+  
+  /* ナビバー: PC用メニューを隠してハンバーガーを表示 */
+  .navbar {
+    padding: 15px 20px !important;
+  }
+  .navbar > nav {
+    display: none !important;
+  }
+  .navbar > .nav-buttons {
+    display: none !important;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  /* ヒーローセクション調整 */
+  .hero {
+    height: 100svh !important;
+    padding-top: 80px !important; 
+  }
+  .hero-content h1 {
+    font-size: 2.2rem !important;
+    margin: 15px 0 !important;
+  }
+  .sub, .sub_2 {
+    font-size: 1.1rem !important;
+    padding: 0 10px !important;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 16px !important;
+    align-items: center;
+  }
+  .hero-buttons a.button {
+    width: 240px !important;
+    margin: 0 !important;
+  }
+
+  /* Aboutセクションのヒーロー対応 */
+  body > .hero {
+    height: auto !important; /* Aboutのheroは高さ100%固定を回避 */
+    padding: 100px 20px 40px !important;
+  }
+
+  /* フォーム/カード全般 */
+  .catch-card {
+    padding: 24px !important;
+    width: 92% !important;
+    max-width: none !important;
+    margin: 0 auto 20px auto !important;
+  }
+  .form-group label {
+    font-size: 1.1rem !important;
+  }
+
+  /* Auth / Login / Register */
+  .auth-box {
+    width: 90% !important;
+    padding: 30px 20px !important;
+  }
+
+  /* History グリッド/リスト */
+  .history-section {
+    padding-top: 40px !important;
+  }
+  .delete-btn {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Map 画面 */
+  .map-section {
+    padding: 90px 10px 40px !important;
+  }
+  .map-section h1 {
+    font-size: 2.2rem !important;
+  }
+  .map-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    border-radius: 12px;
+  }
+  #mapImage {
+    min-width: 600px !important; /* スクロール可能にする */
+    max-width: none !important;
+  }
+  .select-wrapper {
+    width: 100%;
+  }
+  #regionSelect {
+    width: 90% !important;
+  }
+
+  /* About画面 カード */
+  .glass-container {
+    padding: 20px !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .glass-card {
+    padding: 20px !important;
+  }
+}

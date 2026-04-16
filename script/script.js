@@ -166,4 +166,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ===============================
+  // ハンバーガーメニュー制御
+  // ===============================
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+  if (hamburgerMenu && mobileMenuOverlay) {
+    hamburgerMenu.addEventListener("click", () => {
+      hamburgerMenu.classList.toggle("active");
+      mobileMenuOverlay.classList.toggle("active");
+      
+      // メニューを開いている時は背景スクロールを無効化
+      if (mobileMenuOverlay.classList.contains("active")) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // リンククリック時にメニューを閉じる
+    const mobileLinks = mobileMenuOverlay.querySelectorAll("a");
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        hamburgerMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      });
+    });
+  }
+
 });

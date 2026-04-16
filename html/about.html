@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Fishing Map | このサイトについて</title>
   <link rel="stylesheet" href="../css/about.css">
+  <link rel="stylesheet" href="../css/mobile.css">
 </head>
 <body>
 
@@ -19,7 +20,26 @@
     <a href="history.html">過去の釣果</a>
     <a href="map.html">釣果マップ</a>
   </nav>
+  
+  <!-- ハンバーガーボタン -->
+  <button class="hamburger" id="hamburgerMenu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- モバイル用全画面メニュー -->
+<div class="mobile-menu" id="mobileMenuOverlay">
+  <nav>
+    <a href="../index.html">ホーム</a>
+    <a href="today.html">今日の釣果</a>
+    <a href="history.html">過去の釣果</a>
+    <a href="map.html">釣果マップ</a>
+  </nav>
+  <div class="nav-buttons">
+    <a href="login.html"><button class="outline-btn" onclick="showLogin()">ログイン</button></a>
+    <a href="register.html"><button class="primary-btn small" onclick="showRegister()">会員登録</button></a>
+  </div>
+</div>
 
 <section class="hero">
   <h1>Fishing Mapとは？</h1>
