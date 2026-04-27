@@ -136,6 +136,10 @@
 ========================================= */
 @media (max-width: 768px) {
   
+  body {
+    min-height: 100svh;
+  }
+
   /* ナビバー: PC用メニューを隠してハンバーガーを表示 */
   .navbar {
     padding: 15px 20px !important;
@@ -151,7 +155,8 @@
   }
 
   /* ヒーローセクション調整 */
-  .hero {
+  .hero.home-hero {
+    min-height: 100svh !important;
     height: 100svh !important;
     padding-top: 80px !important; 
   }

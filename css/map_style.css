@@ -11,6 +11,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll; /* ← スクロールで動く */
+  min-height: 100vh;
 }
 
 /* ===== ナビバー ===== */
